@@ -104,14 +104,14 @@
         .destaque { 
             font-weight: bold; 
             font-size: 0.85rem; 
-            color: var(--text-dim); 
+            color: #ffffff; /* ALTERADO PARA BRANCO */
             text-transform: uppercase; 
             letter-spacing: 1px;
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 ícones por linha */
+            grid-template-columns: repeat(4, 1fr);
             gap: 20px;
             width: 100%;
             justify-items: center;
@@ -119,12 +119,11 @@
 
         .skills-grid i {
             font-size: 1.8rem;
-            color: #555; /* Cor base mais suave */
+            color: #555;
             transition: all 0.3s ease;
             animation: float 3s ease-in-out infinite;
         }
 
-        /* Cores de Marca para as Skills ao clicar/hover */
         .fa-html5:hover, .fa-html5:active { color: #E34F26; filter: drop-shadow(0 0 10px #E34F26); }
         .fa-css3-alt:hover, .fa-css3-alt:active { color: #1572B6; filter: drop-shadow(0 0 10px #1572B6); }
         .fa-js:hover, .fa-js:active { color: #F7DF1E; filter: drop-shadow(0 0 10px #F7DF1E); }
@@ -134,7 +133,7 @@
         .fa-android:hover, .fa-android:active { color: #3DDC84; filter: drop-shadow(0 0 10px #3DDC84); }
         .fa-wordpress:hover, .fa-wordpress:active { color: #21759B; filter: drop-shadow(0 0 10px #21759B); }
 
-        /* --- GRID CENTRAL ALINHADO --- */
+        /* --- GRID CENTRAL --- */
         .grid-section {
             display: grid;
             grid-template-columns: 1.2fr 1fr;
@@ -171,7 +170,6 @@
             border-radius: 12px;
         }
 
-        /* Redes Sociais Alinhadas */
         .social-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -195,13 +193,11 @@
         .icon-link { text-decoration: none; display: block; height: 100%; }
         .icon-link:active .icon-box { transform: scale(0.9); }
 
-        /* Cores Social */
         .tk:active .icon-box, .tk:hover .icon-box { color: white; text-shadow: -2px -2px 0 var(--tiktok-cyan), 2px 2px 0 var(--tiktok-pink); }
         .ig:active .icon-box, .ig:hover .icon-box { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%,#d6249f 60%,#285AEB 90%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .sp:active .icon-box, .sp:hover .icon-box { color: var(--spotify-green); filter: drop-shadow(0 0 10px var(--spotify-green)); }
         .wa:active .icon-box, .wa:hover .icon-box { color: var(--whatsapp-green); filter: drop-shadow(0 0 10px var(--whatsapp-green)); }
 
-        /* Botão Playlists */
         .btn-playlists {
             background-color: var(--purple-main);
             color: white;
@@ -240,7 +236,7 @@
             <img src="img/complemento.gif" class="pure-gif" alt="Status">
         </div>
 
-        <!-- Widget Skills ORGANIZADO -->
+        <!-- Widget Skills -->
         <div class="card widget2">
             <div class="destaque">Hard Skills</div>
             <div class="skills-grid">
@@ -286,7 +282,7 @@
         <!-- Botão Playlists -->
         <button class="btn-playlists" onclick="togglePlaylists()">
             <i class="fas fa-play-circle" style="font-size: 22px;"></i>
-            Minhas Playlists
+            MInhas Playlists
         </button>
 
         <div id="playlistSection" class="playlists-container">
