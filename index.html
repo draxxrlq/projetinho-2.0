@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Link Tree - @jotarlq_9</title>
+    <title>dev juan</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -68,6 +68,10 @@
             border-radius: 18px;
             background: linear-gradient(45deg, #6a1cf2, #b388ff);
             padding: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
 
         .profile-pic img {
@@ -75,15 +79,22 @@
             height: 100%;
             border-radius: 16px;
             object-fit: cover;
+            background-color: #222; /* Fundo caso não tenha foto ainda */
         }
 
         .username h2 { margin: 0; font-size: 18px; letter-spacing: 0.5px; text-transform: uppercase; }
         .username p { margin: 0; font-size: 14px; color: var(--text-dim); }
 
+        /* Status Orb com o GIF complemento.gif */
         .status-orb {
-            width: 38px; height: 38px;
-            background: radial-gradient(circle, #4a148c, #000);
+            width: 42px; 
+            height: 42px;
             border-radius: 50%;
+            background-image: url('complemento.gif');
+            background-size: cover;
+            background-position: center;
+            border: 2px solid #333;
+            box-shadow: 0 0 10px rgba(106, 28, 242, 0.3);
         }
 
         /* Widget Skills */
@@ -125,11 +136,11 @@
             gap: 12px;
         }
 
-        /* Widget GitHub */
         .widget3 {
             background-color: var(--card-bg);
             border-radius: 24px;
             overflow: hidden;
+            display: flex;
         }
 
         .tread {
@@ -138,27 +149,49 @@
             display: flex;
             flex-direction: column;
             padding: 20px;
-            gap: 12px;
+            gap: 15px;
+            width: 100%;
             transition: transform 0.2s;
         }
 
         .tread:active { transform: scale(0.96); }
 
-        .text-tread h1 { font-size: 18px; margin: 0; font-weight: 700; }
-        .text-tread span { font-size: 14px; color: var(--text-dim); }
+        .text-tread {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
 
-        .git-animation { width: 100%; height: 140px; border-radius: 12px; object-fit: cover; }
+        .text-tread h1 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
 
-        /* Ícones Sociais (Links) */
+        .text-tread span {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        .img-tread {
+            width: 100%;
+            height: 130px;
+            background-image: url(https://64.media.tumblr.com/530e823822a202efc15712f63cfe0933/51b1625deeb1e489-4b/s1280x1920/31bb90a9b972ca55574303d3f4ec1194c2b0adb2.gifv);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            border-radius: 15px;
+        }
+
+        /* Ícones Sociais */
         .social-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
         }
 
-        .icon-link {
-            text-decoration: none;
-        }
+        .icon-link { text-decoration: none; }
 
         .icon-box {
             background-color: var(--card-bg);
@@ -172,23 +205,18 @@
             color: white;
         }
 
-        /* Animações de Clique nas Logos */
         .icon-link:active .icon-box { transform: scale(0.85); }
-        
         .tk:active .icon-box { text-shadow: -3px -3px 0 var(--tiktok-cyan), 3px 3px 0 var(--tiktok-pink); }
-        
         .ig:active .icon-box { 
             background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        
         .sp:active .icon-box { color: var(--spotify-green); filter: drop-shadow(0 0 10px var(--spotify-green)); }
-        
         .wa:active .icon-box { color: var(--whatsapp-green); filter: drop-shadow(0 0 10px var(--whatsapp-green)); }
 
-        /* Botão CTA */
-        .btn-purple {
+        /* Botão Playlists */
+        .btn-playlists {
             background-color: var(--purple-main);
             color: white;
             padding: 22px;
@@ -197,17 +225,24 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
-            text-decoration: none;
+            border: none;
+            cursor: pointer;
             font-weight: bold;
-            font-size: 17px;
+            font-size: 16px;
+            width: 100%;
+            transition: transform 0.2s;
         }
 
+        .btn-playlists:active { transform: scale(0.95); }
+
         .playlists-container {
-            display: flex;
+            display: none;
             flex-direction: column;
             gap: 15px;
             width: 100%;
         }
+
+        .playlists-container.active { display: flex; }
 
     </style>
 </head>
@@ -219,11 +254,12 @@
         <div class="card profile-card">
             <div class="profile-info">
                 <div class="profile-pic">
-                    <img src="https://github.com/draxxrlq.png" alt="User">
+                    <!-- ADICIONE O LINK DA SUA FOTO ABAIXO NO CAMPO SRC -->
+                    <img src="img/perfil.jpg" alt="Foto de Perfil">
                 </div>
                 <div class="username">
-                    <h2>JOTA</h2>
-                    <p>@draxxrlq</p>
+                    <h2>JUAN CEZAR</h2>
+                    <p>Desenvolvedor</p>
                 </div>
             </div>
             <div class="status-orb"></div>
@@ -246,7 +282,7 @@
             </div>
         </div>
 
-        <!-- Grid Central -->
+        <!-- GRID CENTRAL -->
         <div class="grid-section">
             <div class="widget3">
                 <a href="https://github.com/draxxrlq" target="_blank" class="tread">
@@ -254,48 +290,54 @@
                         <h1>Meu perfil no Git</h1>
                         <span>@draxxrlq</span>
                     </div>    
-                    <video class="git-animation" autoplay loop muted playsinline>
-                        <source src="https://64.media.tumblr.com/530e823822a202efc15712f63cfe0933/51b1625deeb1e489-4b/s1280x1920/31bb90a9b972ca55574303d3f4ec1194c2b0adb2.gifv" type="video/mp4">
-                    </video>
+                    <div class="img-tread"></div>
                 </a>
             </div>
             
             <div class="social-grid">
-                <!-- TIKTOK -->
                 <a href="https://www.tiktok.com/@jotarlq_9" target="_blank" class="icon-link tk">
                     <div class="icon-box"><i class="fab fa-tiktok"></i></div>
                 </a>
-                
-                <!-- INSTAGRAM -->
                 <a href="https://www.instagram.com/jotasvl_/?hl=pt-br" target="_blank" class="icon-link ig">
                     <div class="icon-box"><i class="fab fa-instagram"></i></div>
                 </a>
-
-                <!-- SPOTIFY -->
                 <a href="https://open.spotify.com/user/316iwgu5mru2nxxjobk27jmwuqcq?si=d90532968166431c" target="_blank" class="icon-link sp">
                     <div class="icon-box"><i class="fab fa-spotify"></i></div>
                 </a>
-
-                <!-- WHATSAPP -->
                 <a href="https://wa.me/5592992104311" target="_blank" class="icon-link wa">
                     <div class="icon-box"><i class="fab fa-whatsapp"></i></div>
                 </a>
             </div>
         </div>
 
-        <!-- Botão CTA -->
-        <a href="https://wa.me/5592992104311" target="_blank" class="btn-purple">
-            <i class="far fa-calendar-alt" style="font-size: 24px;"></i>
-            Agendar uma consultoria
-        </a>
+        <!-- Botão Playlists -->
+        <button class="btn-playlists" onclick="togglePlaylists()">
+            <i class="fas fa-play-circle" style="font-size: 22px;"></i>
+            Ver minhas Playlists
+        </button>
 
-        <!-- Playlists -->
-        <div class="playlists-container">
+        <div id="playlistSection" class="playlists-container">
             <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1JOoIJPUhatVYt6ht0mpix?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0sNx6FSusSdIwyQjMLQXck?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
 
     </div>
+
+    <script>
+        function togglePlaylists() {
+            const el = document.getElementById('playlistSection');
+            const btn = document.querySelector('.btn-playlists');
+            
+            if (el.classList.contains('active')) {
+                el.classList.remove('active');
+                btn.innerHTML = '<i class="fas fa-play-circle" style="font-size: 22px;"></i> Ver minhas Playlists favoritas';
+            } else {
+                el.classList.add('active');
+                btn.innerHTML = '<i class="fas fa-times-circle" style="font-size: 22px;"></i> Fechar Playlists';
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            }
+        }
+    </script>
 
 </body>
 </html>
