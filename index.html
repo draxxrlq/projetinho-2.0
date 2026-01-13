@@ -16,20 +16,25 @@
             --tiktok-cyan: #25F4EE;
             --whatsapp-green: #25D366;
             --spotify-green: #1DB954;
-            --color-black: #121212;
-            --color-white: #ffffff;
         }
 
         * {
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
+            margin: 0;
+            padding: 0;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
-            font-family: 'Inter', -apple-system, sans-serif;
-            margin: 0;
+            font-family: 'Inter', sans-serif;
             display: flex;
             justify-content: center;
             padding: 12px;
@@ -47,6 +52,7 @@
             background-color: var(--card-bg);
             border-radius: 24px;
             padding: 20px;
+            border: 1px solid #1e1e1e;
         }
 
         /* Perfil */
@@ -66,11 +72,8 @@
             width: 65px;
             height: 65px;
             border-radius: 18px;
-            background: linear-gradient(45deg, #6a1cf2, #b388ff);
+            background: linear-gradient(45deg, var(--purple-main), #b388ff);
             padding: 2px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             overflow: hidden;
         }
 
@@ -79,68 +82,71 @@
             height: 100%;
             border-radius: 16px;
             object-fit: cover;
-            background-color: #222; /* Fundo caso não tenha foto ainda */
+            background-color: #222;
         }
 
-        .username h2 { margin: 0; font-size: 18px; letter-spacing: 0.5px; text-transform: uppercase; }
-        .username p { margin: 0; font-size: 14px; color: var(--text-dim); }
+        .username h2 { font-size: 18px; letter-spacing: 0.5px; text-transform: uppercase; }
+        .username p { font-size: 14px; color: var(--text-dim); }
 
-        /* Status Orb com o GIF complemento.gif */
-        .status-orb {
-            width: 42px; 
-            height: 42px;
-            border-radius: 50%;
-            background-image: url('img/complemento.gif');
-            background-size: cover;
-            background-position: center;
-            border: 2px solid #333;
-            box-shadow: 0 0 10px rgba(106, 28, 242, 0.3);
+        .pure-gif {
+            width: 70px;
+            height: auto;
         }
 
-        /* Widget Skills */
+        /* --- HARD SKILLS ORGANIZADAS EM GRID --- */
         .widget2 {
-            width: 100%;
-            background-color: var(--color-black);
-            border-radius: 24px;
-            padding: 1.2rem;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
+            gap: 15px;
         }
 
-        .hard-skills {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .destaque { 
+            font-weight: bold; 
+            font-size: 0.85rem; 
+            color: var(--text-dim); 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 ícones por linha */
+            gap: 20px;
             width: 100%;
-            gap: 0.8rem;
+            justify-items: center;
         }
 
-        .destaque { color: var(--color-white); font-weight: bold; font-size: 1rem; }
-
-        .skills-icons {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .skills-grid i {
+            font-size: 1.8rem;
+            color: #555; /* Cor base mais suave */
+            transition: all 0.3s ease;
+            animation: float 3s ease-in-out infinite;
         }
 
-        .skills-icons i { color: #fff; font-size: 1.6rem; transition: color 0.3s; }
+        /* Cores de Marca para as Skills ao clicar/hover */
+        .fa-html5:hover, .fa-html5:active { color: #E34F26; filter: drop-shadow(0 0 10px #E34F26); }
+        .fa-css3-alt:hover, .fa-css3-alt:active { color: #1572B6; filter: drop-shadow(0 0 10px #1572B6); }
+        .fa-js:hover, .fa-js:active { color: #F7DF1E; filter: drop-shadow(0 0 10px #F7DF1E); }
+        .fa-react:hover, .fa-react:active { color: #61DAFB; filter: drop-shadow(0 0 10px #61DAFB); }
+        .fa-java:hover, .fa-java:active { color: #007396; filter: drop-shadow(0 0 10px #007396); }
+        .fa-github:hover, .fa-github:active { color: #ffffff; filter: drop-shadow(0 0 10px #ffffff); }
+        .fa-android:hover, .fa-android:active { color: #3DDC84; filter: drop-shadow(0 0 10px #3DDC84); }
+        .fa-wordpress:hover, .fa-wordpress:active { color: #21759B; filter: drop-shadow(0 0 10px #21759B); }
 
-        /* Grid Central */
+        /* --- GRID CENTRAL ALINHADO --- */
         .grid-section {
             display: grid;
             grid-template-columns: 1.2fr 1fr;
             gap: 12px;
+            align-items: stretch;
         }
 
         .widget3 {
             background-color: var(--card-bg);
             border-radius: 24px;
             overflow: hidden;
-            display: flex;
+            border: 1px solid #1e1e1e;
         }
 
         .tread {
@@ -149,49 +155,29 @@
             display: flex;
             flex-direction: column;
             padding: 20px;
-            gap: 15px;
-            width: 100%;
-            transition: transform 0.2s;
+            gap: 12px;
+            height: 100%;
         }
 
-        .tread:active { transform: scale(0.96); }
-
-        .text-tread {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .text-tread h1 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 4px;
-        }
-
-        .text-tread span {
-            color: var(--text-dim);
-            font-size: 0.9rem;
-        }
+        .text-tread h1 { font-size: 1.1rem; font-weight: 700; }
+        .text-tread span { color: var(--text-dim); font-size: 0.85rem; }
 
         .img-tread {
             width: 100%;
-            height: 130px;
+            height: 120px;
             background-image: url(https://64.media.tumblr.com/530e823822a202efc15712f63cfe0933/51b1625deeb1e489-4b/s1280x1920/31bb90a9b972ca55574303d3f4ec1194c2b0adb2.gifv);
             background-position: center;
             background-size: cover;
-            background-repeat: no-repeat;
-            border-radius: 15px;
+            border-radius: 12px;
         }
 
-        /* Ícones Sociais */
+        /* Redes Sociais Alinhadas */
         .social-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
             gap: 12px;
         }
-
-        .icon-link { text-decoration: none; }
 
         .icon-box {
             background-color: var(--card-bg);
@@ -199,21 +185,21 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 45px;
-            aspect-ratio: 1/1;
-            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 40px;
+            height: 100%;
+            transition: all 0.3s;
             color: white;
+            border: 1px solid #1e1e1e;
         }
 
-        .icon-link:active .icon-box { transform: scale(0.85); }
-        .tk:active .icon-box { text-shadow: -3px -3px 0 var(--tiktok-cyan), 3px 3px 0 var(--tiktok-pink); }
-        .ig:active .icon-box { 
-            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .sp:active .icon-box { color: var(--spotify-green); filter: drop-shadow(0 0 10px var(--spotify-green)); }
-        .wa:active .icon-box { color: var(--whatsapp-green); filter: drop-shadow(0 0 10px var(--whatsapp-green)); }
+        .icon-link { text-decoration: none; display: block; height: 100%; }
+        .icon-link:active .icon-box { transform: scale(0.9); }
+
+        /* Cores Social */
+        .tk:active .icon-box, .tk:hover .icon-box { color: white; text-shadow: -2px -2px 0 var(--tiktok-cyan), 2px 2px 0 var(--tiktok-pink); }
+        .ig:active .icon-box, .ig:hover .icon-box { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%,#d6249f 60%,#285AEB 90%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .sp:active .icon-box, .sp:hover .icon-box { color: var(--spotify-green); filter: drop-shadow(0 0 10px var(--spotify-green)); }
+        .wa:active .icon-box, .wa:hover .icon-box { color: var(--whatsapp-green); filter: drop-shadow(0 0 10px var(--whatsapp-green)); }
 
         /* Botão Playlists */
         .btn-playlists {
@@ -229,19 +215,9 @@
             cursor: pointer;
             font-weight: bold;
             font-size: 16px;
-            width: 100%;
-            transition: transform 0.2s;
         }
 
-        .btn-playlists:active { transform: scale(0.95); }
-
-        .playlists-container {
-            display: none;
-            flex-direction: column;
-            gap: 15px;
-            width: 100%;
-        }
-
+        .playlists-container { display: none; flex-direction: column; gap: 15px; }
         .playlists-container.active { display: flex; }
 
     </style>
@@ -254,31 +230,28 @@
         <div class="card profile-card">
             <div class="profile-info">
                 <div class="profile-pic">
-                    <!-- ADICIONE O LINK DA SUA FOTO ABAIXO NO CAMPO SRC -->
-                    <img src="img/perfil.jpg" alt="Foto de Perfil">
+                    <img src="img/perfil.jpg" alt="Juan Cezar">
                 </div>
                 <div class="username">
                     <h2>JUAN CEZAR</h2>
                     <p>Desenvolvedor</p>
                 </div>
             </div>
-            <div class="status-orb"></div>
+            <img src="img/complemento.gif" class="pure-gif" alt="Status">
         </div>
 
-        <!-- Widget Skills -->
-        <div class="widget2">
-            <div class="hard-skills">
-                <div class="destaque">Minhas Hard Skills</div>
-                <div class="skills-icons">
-                    <i class="fab fa-html5"></i>
-                    <i class="fab fa-css3-alt"></i>
-                    <i class="fab fa-js"></i>
-                    <i class="fab fa-react"></i>
-                    <i class="fab fa-java"></i>
-                    <i class="fab fa-github"></i>
-                    <i class="fab fa-android"></i>
-                    <i class="fab fa-wordpress"></i>
-                </div>
+        <!-- Widget Skills ORGANIZADO -->
+        <div class="card widget2">
+            <div class="destaque">Minhas Hard Skills</div>
+            <div class="skills-grid">
+                <i class="fab fa-html5"></i>
+                <i class="fab fa-css3-alt"></i>
+                <i class="fab fa-js"></i>
+                <i class="fab fa-react"></i>
+                <i class="fab fa-java"></i>
+                <i class="fab fa-github"></i>
+                <i class="fab fa-android"></i>
+                <i class="fab fa-wordpress"></i>
             </div>
         </div>
 
@@ -287,7 +260,7 @@
             <div class="widget3">
                 <a href="https://github.com/draxxrlq" target="_blank" class="tread">
                     <div class="text-tread">
-                        <h1>Meu perfil no Git</h1>
+                        <h1>GitHub</h1>
                         <span>@draxxrlq</span>
                     </div>    
                     <div class="img-tread"></div>
@@ -301,7 +274,7 @@
                 <a href="https://www.instagram.com/jotasvl_/?hl=pt-br" target="_blank" class="icon-link ig">
                     <div class="icon-box"><i class="fab fa-instagram"></i></div>
                 </a>
-                <a href="https://open.spotify.com/user/316iwgu5mru2nxxjobk27jmwuqcq?si=d90532968166431c" target="_blank" class="icon-link sp">
+                <a href="https://open.spotify.com/user/316iwgu5mru2nxxjobk27jmwuqcq" target="_blank" class="icon-link sp">
                     <div class="icon-box"><i class="fab fa-spotify"></i></div>
                 </a>
                 <a href="https://wa.me/5592992104311" target="_blank" class="icon-link wa">
@@ -313,7 +286,7 @@
         <!-- Botão Playlists -->
         <button class="btn-playlists" onclick="togglePlaylists()">
             <i class="fas fa-play-circle" style="font-size: 22px;"></i>
-            Ver minhas Playlists
+            Playlists Favoritas
         </button>
 
         <div id="playlistSection" class="playlists-container">
@@ -327,13 +300,12 @@
         function togglePlaylists() {
             const el = document.getElementById('playlistSection');
             const btn = document.querySelector('.btn-playlists');
+            el.classList.toggle('active');
+            btn.innerHTML = el.classList.contains('active') ? 
+                '<i class="fas fa-times-circle" style="font-size: 22px;"></i> Fechar Playlists' : 
+                '<i class="fas fa-play-circle" style="font-size: 22px;"></i> Playlists Favoritas';
             
-            if (el.classList.contains('active')) {
-                el.classList.remove('active');
-                btn.innerHTML = '<i class="fas fa-play-circle" style="font-size: 22px;"></i> Ver minhas Playlists favoritas';
-            } else {
-                el.classList.add('active');
-                btn.innerHTML = '<i class="fas fa-times-circle" style="font-size: 22px;"></i> Fechar Playlists';
+            if(el.classList.contains('active')) {
                 window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
             }
         }
