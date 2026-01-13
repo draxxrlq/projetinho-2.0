@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Tree - @jotarlq_9</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #000000;
+            --card-bg: #121212;
+            --purple-main: #6a1cf2;
+            --text-color: #ffffff;
+            --text-dim: #a0a0a0;
+            --tiktok-pink: #FE2C55;
+            --tiktok-cyan: #25F4EE;
+            --whatsapp-green: #25D366;
+            --spotify-green: #1DB954;
+            --color-black: #121212;
+            --color-white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', -apple-system, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            padding: 12px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 24px;
+            padding: 20px;
+        }
+
+        /* Perfil */
+        .profile-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .profile-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .profile-pic {
+            width: 65px;
+            height: 65px;
+            border-radius: 18px;
+            background: linear-gradient(45deg, #6a1cf2, #b388ff);
+            padding: 2px;
+        }
+
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            border-radius: 16px;
+            object-fit: cover;
+        }
+
+        .username h2 { margin: 0; font-size: 18px; letter-spacing: 0.5px; text-transform: uppercase; }
+        .username p { margin: 0; font-size: 14px; color: var(--text-dim); }
+
+        .status-orb {
+            width: 38px; height: 38px;
+            background: radial-gradient(circle, #4a148c, #000);
+            border-radius: 50%;
+        }
+
+        /* Widget Skills */
+        .widget2 {
+            width: 100%;
+            background-color: var(--color-black);
+            border-radius: 24px;
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .hard-skills {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            gap: 0.8rem;
+        }
+
+        .destaque { color: var(--color-white); font-weight: bold; font-size: 1rem; }
+
+        .skills-icons {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .skills-icons i { color: #fff; font-size: 1.6rem; transition: color 0.3s; }
+
+        /* Grid Central */
+        .grid-section {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 12px;
+        }
+
+        /* Widget GitHub */
+        .widget3 {
+            background-color: var(--card-bg);
+            border-radius: 24px;
+            overflow: hidden;
+        }
+
+        .tread {
+            text-decoration: none;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            gap: 12px;
+            transition: transform 0.2s;
+        }
+
+        .tread:active { transform: scale(0.96); }
+
+        .text-tread h1 { font-size: 18px; margin: 0; font-weight: 700; }
+        .text-tread span { font-size: 14px; color: var(--text-dim); }
+
+        .git-animation { width: 100%; height: 140px; border-radius: 12px; object-fit: cover; }
+
+        /* Ícones Sociais (Links) */
+        .social-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .icon-link {
+            text-decoration: none;
+        }
+
+        .icon-box {
+            background-color: var(--card-bg);
+            border-radius: 22px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 45px;
+            aspect-ratio: 1/1;
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            color: white;
+        }
+
+        /* Animações de Clique nas Logos */
+        .icon-link:active .icon-box { transform: scale(0.85); }
+        
+        .tk:active .icon-box { text-shadow: -3px -3px 0 var(--tiktok-cyan), 3px 3px 0 var(--tiktok-pink); }
+        
+        .ig:active .icon-box { 
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .sp:active .icon-box { color: var(--spotify-green); filter: drop-shadow(0 0 10px var(--spotify-green)); }
+        
+        .wa:active .icon-box { color: var(--whatsapp-green); filter: drop-shadow(0 0 10px var(--whatsapp-green)); }
+
+        /* Botão CTA */
+        .btn-purple {
+            background-color: var(--purple-main);
+            color: white;
+            padding: 22px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        .playlists-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Perfil -->
+        <div class="card profile-card">
+            <div class="profile-info">
+                <div class="profile-pic">
+                    <img src="https://github.com/draxxrlq.png" alt="User">
+                </div>
+                <div class="username">
+                    <h2>JOTA</h2>
+                    <p>@draxxrlq</p>
+                </div>
+            </div>
+            <div class="status-orb"></div>
+        </div>
+
+        <!-- Widget Skills -->
+        <div class="widget2">
+            <div class="hard-skills">
+                <div class="destaque">Minhas Hard Skills</div>
+                <div class="skills-icons">
+                    <i class="fab fa-html5"></i>
+                    <i class="fab fa-css3-alt"></i>
+                    <i class="fab fa-js"></i>
+                    <i class="fab fa-react"></i>
+                    <i class="fab fa-java"></i>
+                    <i class="fab fa-github"></i>
+                    <i class="fab fa-android"></i>
+                    <i class="fab fa-wordpress"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid Central -->
+        <div class="grid-section">
+            <div class="widget3">
+                <a href="https://github.com/draxxrlq" target="_blank" class="tread">
+                    <div class="text-tread">
+                        <h1>Meu perfil no Git</h1>
+                        <span>@draxxrlq</span>
+                    </div>    
+                    <video class="git-animation" autoplay loop muted playsinline>
+                        <source src="https://64.media.tumblr.com/530e823822a202efc15712f63cfe0933/51b1625deeb1e489-4b/s1280x1920/31bb90a9b972ca55574303d3f4ec1194c2b0adb2.gifv" type="video/mp4">
+                    </video>
+                </a>
+            </div>
+            
+            <div class="social-grid">
+                <!-- TIKTOK -->
+                <a href="https://www.tiktok.com/@jotarlq_9" target="_blank" class="icon-link tk">
+                    <div class="icon-box"><i class="fab fa-tiktok"></i></div>
+                </a>
+                
+                <!-- INSTAGRAM -->
+                <a href="https://www.instagram.com/jotasvl_/?hl=pt-br" target="_blank" class="icon-link ig">
+                    <div class="icon-box"><i class="fab fa-instagram"></i></div>
+                </a>
+
+                <!-- SPOTIFY -->
+                <a href="https://open.spotify.com/user/316iwgu5mru2nxxjobk27jmwuqcq?si=d90532968166431c" target="_blank" class="icon-link sp">
+                    <div class="icon-box"><i class="fab fa-spotify"></i></div>
+                </a>
+
+                <!-- WHATSAPP -->
+                <a href="https://wa.me/5592992104311" target="_blank" class="icon-link wa">
+                    <div class="icon-box"><i class="fab fa-whatsapp"></i></div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Botão CTA -->
+        <a href="https://wa.me/5592992104311" target="_blank" class="btn-purple">
+            <i class="far fa-calendar-alt" style="font-size: 24px;"></i>
+            Agendar uma consultoria
+        </a>
+
+        <!-- Playlists -->
+        <div class="playlists-container">
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1JOoIJPUhatVYt6ht0mpix?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0sNx6FSusSdIwyQjMLQXck?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+
+    </div>
+
+</body>
+</html>
